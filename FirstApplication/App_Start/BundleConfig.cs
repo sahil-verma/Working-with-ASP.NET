@@ -11,6 +11,11 @@ namespace FirstApplication
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/scripts").Include(
+                       "~/Scripts/jquery-2.1.1.js",
+                        "~/Scripts/main.js",
+                        "~/Scripts/modernizr.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -25,7 +30,9 @@ namespace FirstApplication
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/reset.css",
+                      "~/Content/style.css" ));
         }
     }
 }

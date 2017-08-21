@@ -1,0 +1,116 @@
+﻿@model FirstApplication.Models.Movie
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2></h2>
+
+<div>
+    <div class="panel panel-info">
+
+        <div class="panel-heading">Movie Details</div>
+        <div class="panel-body">
+        </div>
+
+        <table class="table">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Actors)
+                </dt>
+
+                <dd>
+                    <ul>
+                        @foreach (var item in Model.Actors)
+                        {
+                            <li>@item.ToString()</li>
+                        }
+                    </ul>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.HitMovie)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.HitMovie)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreateDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EditDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EditDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Ratings)
+                </dt>
+
+                <dd id="RatingsControl">
+                    @{ Html.RenderAction("RatingsControl", "Ratings", new { movieId = Model.MovieId }); }
+                </dd>
+
+            </dl>
+        </table>
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MovieId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+
+    function SetRatingControlCallbacks(e) {
+        var rank = $("#RatingsControl a[name='Rank']");
+        rank.on('click', SetRating);
+    }
+    
+    function SetRating(e) {
+        var data = { movieId: $(this).data("movieid"), rank: $(this).data("rank") };
+
+        $.post("@Url.Action("SetRating", "Ratings")", data)
+            .done(function (response, status, jqxhr) {
+            var url = "@Url.Action("RatingsControl", "Ratings")";
+            $("#RatingsControl").load(url, { movieId: data.movieId },
+                function (responseText, statusText, xhr) {
+                    switch (statusText) {
+                        case "success":
+                            SetRatingControlCallbacks();
+                            break;
+                        default:
+                            break;    
+                    }   
+        
+                if (responseText.lenght == 0) {
+                }
+            });
+        })
+
+        .fail(function (jqxhr, status, error) {
+        })
+    }
+
+    $(document).ready(SetRatingControlCallbacks);
+</script>
+}

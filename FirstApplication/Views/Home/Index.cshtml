@@ -2,30 +2,41 @@
     ViewBag.Title = "Home Page";
 }
 
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
 <div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+    
+    <!--// Given more information about the content in the application
+    //added after the presentation-->
+    <p class="lead"><b> XIFTEN is a web application build using ASP.NET, HTML, CSS, JavaScript. It enables the user to add, create, edit, delete movies 
+                    and actors as well, however, the user is required to be logged in for these options otherwise the user can only view the data.
+                    Also, you're able to view options for the movies and actors while creating them. It has an in-build ratings system which allows you to rate the movies
+                    so, it would be nice to know the review before hand.</b></p>
 </div>
 
 <div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    <div class="col-md-2">
+        <h2>Team Members</h2>
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    <div class="col-md-5">
+        <div class="jumbotron">
+            <p>Sahil Verma (Back-End & Database)</p>
+            <p>Student Number: 200335300</p>
+            <p>Email: 200335300@student.georgianc.on.ca</p>
+            <p><a class="btn btn-default" href="http://github.com/sahil-verma">GitHub &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <div class="col-md-5">
+        <div class="jumbotron">
+            <p>Harshit Sharma (Front-End & Back-End)</p>
+            <p>Student Number: 200333254</p>
+            <p>Email: Harshit.Sharma@MyGeorgian.ca</p>
+            <p><a class="btn btn-default" href="https://github.com/HarryKural">GitHub &raquo;</a></p>
+        </div>
     </div>
 </div>
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/bootstrap")

@@ -1,0 +1,69 @@
+﻿@model IEnumerable<FirstApplication.Models.Movie>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+
+<div class="panel panel-primary">
+
+    <div class="panel-heading">Movies</div>
+    <div class="panel-body">
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+    </div>
+
+    <table class="table table-hover table-responsive table-striped">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HitMovie)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Actors)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EditDate)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.HitMovie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Actors.Count)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreateDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EditDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.MovieId }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.MovieId }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.MovieId })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")

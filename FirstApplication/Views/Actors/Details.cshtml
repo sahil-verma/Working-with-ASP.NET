@@ -1,0 +1,61 @@
+﻿@model FirstApplication.Models.Actor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+<div>
+    <div class="panel panel-info">
+
+        <div class="panel-heading">Actor Details</div>
+        <div class="panel-body">
+        </div>
+
+        <table class="table">
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Movies)
+                </dt>
+
+                <dd>
+                    <ul>
+                        @foreach (var item in Model.Movies)
+                        {
+                            <li>@item.ToString()</li>
+                        }
+                    </ul>
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreateDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreateDate)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.EditDate)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.EditDate)
+                </dd>
+
+            </dl>
+            </table>
+        </div>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ActorId }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>

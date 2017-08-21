@@ -3,6 +3,9 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace FirstApplication.Models
 {
@@ -16,6 +19,11 @@ namespace FirstApplication.Models
             // Add custom user claims here
             return userIdentity;
         }
+
+        [Display(Name = "Ratings")]
+        [InverseProperty("User")]
+        public virtual ICollection<Rating> Ratings { get; set; } = new HashSet<Rating>();
+
     }
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
